@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+    .head-color {
+      color: #ee6e73;
+      text-align: center 
+    }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1 class="head-color">COMP 584 Assignment I</h1>
+        <ul id="messages" class="collection with-header center">
+            <li class="collection-header"><h4>Basic Socket.io</h4></li>
+          </ul>
+    </div>
+    
+  </body>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+  $(function () {
+        var socket = io();
+        socket.on("hello", ()=> {
+          console.log('Hi there. How are you?');
+          $("#messages").append("<li class='collection-item'>Hi there. How are you?</li>");
+          socket.emit('How is it going');
+        });
+        socket.on("great. you?", ()=>{
+          console.log('I am well. It was nice talking to you. See you soon!');
+          $("#messages").append("<li class='collection-item'>I am well. It was nice talking to you. See you soon!</li>");
+          socket.emit('See you soon');
+        });
+        
+      });
+  </script>
+</html>
