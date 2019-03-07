@@ -10,15 +10,15 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   console.log("Client Connected");
   
-  socket.emit("hello");
+  socket.emit('greeting1', "hello");
   
-  socket.on('How is it going', function(){
-    console.log("I'm doing great. How about you?");
-    socket.emit("great. you?")
+  socket.on('greeting2', (payload)=>{
+    console.log(payload);
+    socket.emit('greeting3', "How are you?")
   });
 
-  socket.on('See you soon', ()=> {
-    console.log('goodbye');
+  socket.on('greeting4', (payload)=> {
+    console.log(payload);
   })
   
   socket.on('disconnect', ()=> {

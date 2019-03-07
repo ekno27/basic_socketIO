@@ -24,15 +24,15 @@
   <script>
   $(function () {
         var socket = io();
-        socket.on("hello", ()=> {
-          console.log('Hi there. How are you?');
-          $("#messages").append("<li class='collection-item'>Hi there. How are you?</li>");
-          socket.emit('How is it going');
+        socket.on('greeting1', (payload)=> {
+          console.log(payload);
+          $("#messages").append(`<li class='collection-item'>${payload}</li>`);
+          socket.emit('greeting2', "hi there!");
         });
-        socket.on("great. you?", ()=>{
-          console.log('I am well. It was nice talking to you. See you soon!');
-          $("#messages").append("<li class='collection-item'>I am well. It was nice talking to you. See you soon!</li>");
-          socket.emit('See you soon');
+        socket.on('greeting3', (payload)=>{
+          console.log(payload);
+          $("#messages").append(`<li class='collection-item'>${payload}</li>`);
+          socket.emit('greeting4', "great");
         });
         
       });
